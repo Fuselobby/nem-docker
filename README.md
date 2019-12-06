@@ -82,8 +82,8 @@ want to tweak the config of your node, this is the file to edit.
 
 After the config file generation, the script builds and runs the image with these commands, naming the container mynem_container:
 
-    sudo docker build -t mynem_image  .
-    sudo docker run --name mynem_container -v ${PWD}/nem:/root/nem $config_mounts -t -d  -p 7777:7777 -p 7880:7880 -p 7890:7890 -p 8989:8989 mynem_image "$@"
+    sudo docker build -t nem_blockchain  .
+    sudo docker run --name mynem_container -v ${PWD}/nem:/root/nem $config_mounts -t -d  -p 7777:7777 -p 7880:7880 -p 7890:7890 -p 8989:8989 nem_blockchain "$@"
 
 This will run the container and make the necessary ports available on your host.
 `$config_mounts` passes the necessary arguments to use the custom config file located in `custom-configs`. Currently handled files are `supervisord.conf`, 'nis.config-user.properties` and `servant.config.properties`. Here is an example to customize the supervisor config. First copy the sample config file to get started, then edit it, eg to set some services as automatically started at boot. After that stop and boot the container and the new config is applied.

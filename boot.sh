@@ -8,7 +8,7 @@ fi
 
 # we rebuild and remove existing container every time. 
 # The benefits: upgrades are automatic after the git pull
-docker build --rm=false -t mynem_image  .
+docker build --rm=false -t nem_blockchain  .
 docker ps -a | grep mynem_container > /dev/null && docker rm mynem_container
 
 
@@ -38,7 +38,7 @@ mkdir -p $PWD/nem/nis
 chown -R 1000 nem
 
 
-docker run --restart always --name mynem_container -v ${PWD}/nem:/home/nem/nem $config_mounts -t -d  -p 7777:7777 -p 7778:7778 -p 7880:7880 -p 7890:7890 -p 8989:8989 mynem_image
+docker run --restart always --name mynem_container -v ${PWD}/nem:/home/nem/nem $config_mounts -t -d  -p 7777:7777 -p 7778:7778 -p 7880:7880 -p 7890:7890 -p 8989:8989 nem_blockchain
 set +x
 
 
